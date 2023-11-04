@@ -28,10 +28,8 @@ def random_forest(X, Y, classes):
         X_train, X_test, Y_train, Y_test = train_test_split(
             X, Y, test_size=1.0 / 3, random_state=random.randint(0, 100)
         )
+        rf = RandomForestClassifier(n_jobs=4, n_estimators=100)
 
-        rf = RandomForestClassifier(
-            n_estimators=51, random_state=random.randint(0, 100), n_jobs=4
-        )
         rf.fit(X_train, Y_train)
 
         Y_predicted = rf.predict(X_test)

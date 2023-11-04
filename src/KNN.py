@@ -42,6 +42,10 @@ def knn(X, Y, classes):
                 "knn_comparison_table.png",
             )
 
+    print("Chi so F1-macro o lan chay thap nhat: ", min(result))
+    print("Chi so F1-macro o lan chay cao nhat: ", max(result))
+    print("Chi so F1-macro trung binh: ", sum(result) / NUM_OF_EXECUTIONS)
+
     create_single_bar_plot(
         num_of_executions,
         result,

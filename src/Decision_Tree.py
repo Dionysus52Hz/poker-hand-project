@@ -4,7 +4,7 @@ from handle_data import (
     count_unique_class,
     combine_image,
 )
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, export_text
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 from PIL import Image
@@ -28,8 +28,9 @@ def decision_tree(X, Y, classes):
         clf_gini = DecisionTreeClassifier(
             criterion="gini",
             random_state=100,
-            max_depth=25,
+            max_depth=20,
             min_samples_leaf=4,
+            min_samples_split=2,
         )
         clf_gini.fit(X_train, Y_train)
 
@@ -45,6 +46,7 @@ def decision_tree(X, Y, classes):
                 pred_class_counts_dict,
                 "decision_tree_comparison_table.png",
             )
+
     print("Chi so F1-macro o lan chay thap nhat: ", min(result))
     print("Chi so F1-macro o lan chay cao nhat: ", max(result))
     print("Chi so F1-macro trung binh: ", sum(result) / NUM_OF_EXECUTIONS)
